@@ -7,7 +7,7 @@ This repository relies on python 3.6 and has been tested on an Anaconda environm
 
 ### Installation
 
-[Set up an Anaconda environment](https://github.com/CSTR-Edinburgh/mlpractical/blob/mlp2017-8/master/notes/environment-set-up.md), then run the following commands:
+[Set up and activate an Anaconda environment](https://github.com/CSTR-Edinburgh/mlpractical/blob/mlp2017-8/master/notes/environment-set-up.md), then run the following commands:
 ```
 git clone git@github.com:yadrimz/stochastic_futures_prediction.git
 cd stochastic_futures_prediction
