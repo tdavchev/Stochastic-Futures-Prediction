@@ -3,6 +3,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+from PIL import Image
+
 POS_MSEC = cv2.CAP_PROP_POS_MSEC
 POS_FRAMES = cv2.CAP_PROP_POS_FRAMES
 
@@ -36,6 +38,8 @@ def get_props(captured):
     width = captured.get(cv2.CAP_PROP_FRAME_WIDTH)   # float
     height = captured.get(cv2.CAP_PROP_FRAME_HEIGHT) # float
 
+    return height, width
+
 def get_video(videopath):
     return cv2.VideoCapture(videopath)
 
@@ -58,8 +62,9 @@ def get_frame(videopath, frame_id):
 def plot(real_traj, complete_traj, statistics, frame_id, videopath):
 
     captured, frame, frame_txt = get_frame(videopath, frame_id)
-
-    # agent_txt = 'Agent: {}'.format(int())
+    # BGR -> RGB
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    # Drawing text on the image
     pt = (3, frame.shape[0]-3)
     ll, ur = draw_text(frame, pt, frame_txt)
 
@@ -79,7 +84,7 @@ def plot(real_traj, complete_traj, statistics, frame_id, videopath):
         cv2.line(frame, p1, p2, color, 1, cv2.LINE_AA)
         cv2.line(frame, loc1, loc2, color, 1, cv2.LINE_AA)
         prev = curr
-    
+
     # Plot the predicted trajectory
     color = (192,19,192)
     pred = []
