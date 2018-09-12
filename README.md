@@ -23,7 +23,7 @@ jupyter notebook
 
 And navigate to Notebooks -> Tutorial 1.ipynb
 
-![Ipython Notebook](https://cdn1.imggmi.com/uploads/2018/9/11/3e0a50f0159f04aae9c5141a2acc397e-full.png)
+![Ipython Notebook](https://cdn1.imggmi.com/uploads/2018/9/12/cb43dc627b5af63bc5bd03cb7c270f67-full.png)
 
 ### Project Structure
 
