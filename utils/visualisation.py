@@ -55,7 +55,7 @@ def get_frame(videopath, frame_id):
 
     return captured, frame, frame_txt
 
-def visual(real_traj, complete_traj, statistics, frame_id, videopath):
+def plot(real_traj, complete_traj, statistics, frame_id, videopath):
 
     captured, frame, frame_txt = get_frame(videopath, frame_id)
 
@@ -97,9 +97,8 @@ def visual(real_traj, complete_traj, statistics, frame_id, videopath):
         cv2.line(frame, loc1, loc2, color, 1, cv2.LINE_AA)
         prev = curr
 
-    cv2.startWindowThread()
-    cv2.imshow('frame', frame)
-    cv2.waitKey(0)
-    captured.release()
-    cv2.destroyAllWindows()
-    plt.close('all')
+    plt.figure(figsize=(4, 4), dpi=960)
+    plt.imshow(frame)
+    plt.axis('off')
+    plt.title("Plotting prediction in purple and targets in green")
+    plt.show()
