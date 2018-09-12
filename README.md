@@ -76,4 +76,4 @@ Project File Structure:
 ### Credits
 A massive thank you to the team at Dev.bg for providing me with this incredible opportunity! 
 
-Special thanks to M. Asenov and H. Velev for providing very useful insight about the writing style and clarity of expression for the tutorial and to A. Vemula for providing the Matlab scripts for annotating UCY and ETH University dat sets. This has helped me reduce the time required for setting up this tutorial and provide a comprehensive means to communicate the ideas behind this code.
+Special thanks to D. Angelov, M. Asenov and H. Velev for providing very useful insight about the writing style and clarity of expression for the tutorial and to A. Vemula for providing the Matlab scripts for annotating UCY and ETH University dat sets. This has helped me reduce the time required for setting up this tutorial and provide a comprehensive means to communicate the ideas behind this code.
