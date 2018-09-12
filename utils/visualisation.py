@@ -3,8 +3,6 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-from PIL import Image
-
 POS_MSEC = cv2.CAP_PROP_POS_MSEC
 POS_FRAMES = cv2.CAP_PROP_POS_FRAMES
 
