@@ -25,6 +25,28 @@ And navigate to Notebooks -> Tutorial 1.ipynb
 
 ![Ipython Notebook](https://cdn1.imggmi.com/uploads/2018/9/12/cb43dc627b5af63bc5bd03cb7c270f67-full.png)
 
+### Training and Inference
+Trainign can be done using relatively small CPU power. The example below training is done using MacBook Pro 13 base model. At train time the output is similar to this:
+```
+0/2700 (epoch 0), train_loss = 0.111, time/batch = 0.001
+99/2700 (epoch 3), train_loss = 8.332, time/batch = 0.018
+198/2700 (epoch 7), train_loss = 0.538, time/batch = 0.015
+```
+Inference is then done over all trajectories from the test dataset that fit the chosen criteria.
+```
+Processed trajectory number :  50 out of  352  trajectories
+Processed trajectory number :  100 out of  352  trajectories
+Processed trajectory number :  150 out of  352  trajectories
+Processed trajectory number :  200 out of  352  trajectories
+Processed trajectory number :  250 out of  352  trajectories
+Processed trajectory number :  300 out of  352  trajectories
+Processed trajectory number :  350 out of  352  trajectories
+Total mean error of the model is  0.10521254192652005
+```
+
+Results in:
+![Trajectory Prediction](https://media.giphy.com/media/2tMzCcNILY2JAryf6g/giphy.gif)
+
 ### Project Structure
 
 ```
