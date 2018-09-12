@@ -45,6 +45,7 @@ Total mean error of the model is  0.10521254192652005
 ```
 
 Results in:
+
 ![Trajectory Prediction](https://media.giphy.com/media/2tMzCcNILY2JAryf6g/giphy.gif)
 
 ### Project Structure
