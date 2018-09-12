@@ -102,7 +102,7 @@ class BasicLSTM(object):
                 # Train operator
                 self.train_op = optimizer.apply_gradients(zip(grads, trainable_params))
 
-                self.init = tf.global_variables_initializer()
+        self.init = tf.global_variables_initializer()
 
     def build_embeddings(self, input_dim, output_dim):
         # Define variables for embedding the input
