@@ -100,7 +100,7 @@ def plot(real_traj, complete_traj, statistics, frame_id, videopath):
         cv2.line(frame, loc1, loc2, color, 1, cv2.LINE_AA)
         prev = curr
 
-    plt.figure(figsize=(4, 4), dpi=960)
+    plt.figure(figsize=(4, 4), dpi=256)
     plt.imshow(frame)
     plt.axis('off')
     plt.title("Plotting prediction in purple and targets in green")
