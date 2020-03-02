@@ -24,6 +24,47 @@ def tf_2d_normal(g, x, y, mux, muy, sx, sy, rho):
 
         return result
 
+def get_mean_error_perframe(predicted_traj, true_traj, observed_length, max_num_agents):
+    '''
+    Function that computes the mean euclidean distance error between the
+    predicted and the true trajectory
+    params:
+    predicted_traj : numpy matrix with the points of the predicted trajectory
+    true_traj : numpy matrix with the points of the true trajectory
+    observed_length : The length of trajectory observed
+    taken from: https://github.com/vvanirudh/social-lstm-tf
+    '''
+    # The data structure to store all errors
+    error = np.zeros(len(true_traj) - observed_length)
+    # For each point in the predicted part of the trajectory
+    for i in range(observed_length, len(true_traj)):
+        # The predicted position
+        pred_pos = predicted_traj[i, :]
+        # The true position
+        true_pos = true_traj[i, :]
+        timestep_error = 0
+        counter = 0
+        for j in range(max_num_agents):
+            if true_pos[j, 0] == 0.0:
+                continue
+            elif pred_pos[j, 0] == 0.0:
+                continue
+            else:
+                if true_pos[j, 1] > 1.0 or true_pos[j, 1] < 0.0:
+                    continue
+                elif true_pos[j, 2] > 1.0 or true_pos[j, 2] < 0.0:
+                    continue
+
+                # The euclidean distance is the error
+                timestep_error += np.linalg.norm(true_pos[j, [1, 2]] - pred_pos[j, [1, 2]])
+                counter += 1
+
+        if counter != 0:
+            error[i - observed_length] = timestep_error / counter
+
+    # Return the mean error
+    return np.mean(error)
+
 def get_mean_error(predicted_traj, true_traj, observed_length):
     '''
     Function that computes the mean euclidean distance error between the

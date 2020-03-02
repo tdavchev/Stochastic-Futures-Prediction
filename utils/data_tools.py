@@ -86,6 +86,43 @@ def parse_annotations(Hinv, obsmat_txt):
 
     return recorded_frames, peds_in_frame, peds
 
+def preprocess_frames(data_dirs, max_num_agents=40):
+    '''
+    Collect all data from the already preprocessed csv files.
+    These files are used for training and to speed up the process
+    of training as opposed to loading and preprocessing each and every
+    one individually.
+    The spit out format is frame oriented where each frame has a list of
+    agents and their locations.
+    NOTE: modified from https://github.com/vvanirudh/social-lstm-tf
+    args:
+        data_dirs                : the directories names used
+    returns:
+        all_frames_data          : an np.array() of size [num_dirs x num_unique_frames x max_num_agents x 3 (aid, x, y)]
+        frames_list              : an array with the actual frames ordered accordingly
+        dataset_endframe_indices : the indices of the last frame per dataset
+    '''
+    frames_list = []
+    dataset_endframe_indices = []
+    current_ped = 0
+    all_frames_data = []
+    for idx, directory in enumerate(data_dirs):
+
+        file_path = os.path.join(directory, 'pixel_pos.csv')
+        data = np.genfromtxt(file_path, delimiter=',')
+
+        # num_peds = np.size(np.unique(data[1, :]))
+        unique_frames = np.unique(data[0, :])
+        frames_list.append(unique_frames)
+        dataset_endframe_indices.append(len(unique_frames))
+        all_frames_data.append(np.zeros((len(unique_frames), max_num_agents, 3)))
+        for f_id, frame in enumerate(unique_frames):
+            agents_in_frame = data[:, data[0, :] == frame]
+            aids_xs_ys = agents_in_frame[[1, 2, 3], :].T
+            all_frames_data[idx][f_id, 0:len(aids_xs_ys), :] = np.array(aids_xs_ys)
+
+    return np.array(all_frames_data), frames_list, dataset_endframe_indices
+
 def preprocess(data_dirs):
     '''
     Collect all data from the already preprocessed csv files.
@@ -115,6 +152,26 @@ def preprocess(data_dirs):
         current_ped += numPeds
 
     return np.array(all_ped_data), all_ped_dict, dataset_indices
+
+def load_preprocessed_frames(frame_data, batch_size, sequence_length):
+    '''
+    Function to load the pre-processed data in terms of [frame, agent, x, y]
+    params:
+    data_file : The path to the pickled data file
+    '''
+    # Construct the data with sequences(or trajectories) longer than sequence_length
+    counter = 0
+    for idx, cur_dset_data in enumerate(frame_data):
+        print(int(len(cur_dset_data) / (sequence_length+1)))
+        counter += int(len(cur_dset_data) / (sequence_length+1)) # not sure about 1 or 2 ...
+
+    # Calculate the number of batches (each of batch_size) in the data
+    num_batches = int(counter / batch_size)
+    # On an average, we need twice the number of batches to cover the data
+    # due to randomization introduced: https://github.com/vvanirudh/social-lstm-tf
+    num_batches = num_batches * 2
+
+    return num_batches
 
 def load_preprocessed(pedData, batch_size, sequence_length):
     '''
@@ -148,9 +205,89 @@ def tick_batch_pointer(pointer, data_len):
 
     return pointer
 
+def tick_dataset_pointer(dataset_pointer, data_len):
+    dataset_pointer += 1
+    pointer = 0
+    if dataset_pointer >= data_len:
+        dataset_pointer = 0
+
+    return dataset_pointer, pointer
+
+
+def advance_frame_pointer(pointer, value):
+    pointer += value
+    return pointer
+
 def reset_batch_pointer():
     # Reset the data pointer
     return 0
+
+def reset_data_set_pointer():
+    # Reset the data pointer
+    return 0
+
+def next_batch_frame(_data, _frames_list, pointer, dataset_pointer, batch_size, sequence_length, dataset_names, max_num_peds, rnd=None, random_update=True, infer=False):
+    '''
+    Function to get the next batch of points.
+    TODO: Needs to fix the hardcoded dataset names ...
+    '''
+    # List of source and target data for the current batch
+    x_batch = []
+    y_batch = []
+    d_batch = []
+    f_batch = []
+    # For each sequence in the batch
+    i = 0
+    while i < batch_size:
+        frame_data = _data[dataset_pointer]
+        frame_ids = _frames_list[dataset_pointer]
+
+        idx = pointer
+        if idx + sequence_length < frame_data.shape[0]:
+            i += 1
+            # All the data in this sequence
+            seq_frame_data = frame_data[idx:idx+sequence_length+1, :]
+            seq_source_frame_data = frame_data[idx:idx+sequence_length, :]
+            seq_target_frame_data = frame_data[idx+1:idx+sequence_length+1, :]
+            # Number of unique agents in this sequence of frames
+            agents_id_list = np.unique(seq_frame_data[:, :, 0])
+            num_unique_agents = agents_id_list.shape[0]
+
+            input_data = np.zeros((sequence_length, max_num_peds, 3))
+            target_data = np.zeros((sequence_length, max_num_peds, 3))
+            fid_data = frame_ids[idx:idx+sequence_length] # I only need the input frames!
+
+            for seq in range(sequence_length):
+                iseq_frame_data = seq_source_frame_data[seq, :]
+                tseq_frame_data = seq_target_frame_data[seq, :]
+                for age, agent_id in enumerate(agents_id_list):#range(num_unique_agents):
+                    # this should be enumerate over all agents_id_lists...!!!
+                    # agent_id = agents_id_list[age]
+                    if agent_id == 0:
+                        continue
+                    else:
+                        iage = iseq_frame_data[iseq_frame_data[:, 0] == agent_id, :]
+                        tage = np.squeeze(tseq_frame_data[tseq_frame_data[:, 0] == agent_id, :])
+                        if iage.size != 0:
+                            input_data[seq, age, :] = iage
+                        if tage.size != 0:
+                            target_data[seq, age, :] = tage
+
+            x_batch.append(input_data)
+            y_batch.append(target_data)
+            f_batch.append(fid_data)
+
+            if random_update:
+                pointer = advance_frame_pointer(pointer, rnd.randint(1, sequence_length))
+            else:
+                pointer = advance_frame_pointer(pointer, 1)
+
+            d_batch.append(dataset_names[dataset_pointer])
+        else:
+            dataset_pointer, pointer = tick_dataset_pointer(dataset_pointer, len(_data))
+
+    return x_batch, y_batch, d_batch, f_batch, pointer, dataset_pointer
+
 
 def next_batch(_data, pointer, batch_size, sequence_length, infer=False):
     '''
