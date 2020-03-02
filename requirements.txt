@@ -2,5 +2,5 @@ cython
 PyHamcrest
 numpy>=1.10.4
 matplotlib
-tensorflow==1.9.0
+tensorflow==1.15.2
 opencv-python
