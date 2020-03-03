@@ -35,7 +35,7 @@ Trainign can be done using relatively small CPU power. The example below trainin
 99/2700 (epoch 3), train_loss = 8.332, time/batch = 0.018
 198/2700 (epoch 7), train_loss = 0.538, time/batch = 0.015
 ```
-Inference is then done over all trajectories from the test dataset that fit the chosen criteria.
+Inference is then done over all trajectories from the test dataset that fit the chosen criteria. Result is obtained from Tutorial 1.
 ```
 Processed trajectory number :  50 out of  352  trajectories
 Processed trajectory number :  100 out of  352  trajectories
