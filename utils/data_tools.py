@@ -187,11 +187,9 @@ def load_preprocessed(pedData, batch_size, sequence_length):
         # Extract their trajectory
         # If the length of the trajectory is greater than sequence_length
         # (+1 as we need both source and target data)
-        # if traj.shape[0] > (sequence_length+2):
         if traj.shape[0] > (sequence_length):
             load_data.append(traj)
             # Number of batches this datapoint is worth
-            # counter += int(traj.shape[0] / ((sequence_length+2)))
             counter += int(traj.shape[0] / ((sequence_length+1)))
 
     # Calculate the number of batches (each of batch_size) in the data
