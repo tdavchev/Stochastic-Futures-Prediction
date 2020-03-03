@@ -24,6 +24,10 @@ jupyter notebook
 And navigate to Notebooks -> Tutorial 1.ipynb
 ![Ipython Notebook 1](https://drive.google.com/uc?export=view&id=1JmlL7a2IhwmHZ-LCRYJRDA6ksxeUi8Tn)
 
+And -> Tutorial 2.ipynb
+![Ipython Notebook 2](https://drive.google.com/uc?export=view&id=168tMhQOgaecxUeM7WT_0AXw_cmtANIp_ )
+
+
 ### Training and Inference
 Trainign can be done using relatively small CPU power. The example below training is done using MacBook Pro 13 base model. At train time the output is similar to this:
 ```
