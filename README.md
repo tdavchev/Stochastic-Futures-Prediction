@@ -88,6 +88,7 @@ Project File Structure:
 ------------pixel_pos.csv
 -notebooks/
 ---Tutorial 1.ipynb
+---Tutorial 2.ipynb
 -models
 ---lstm.py
 -utils
