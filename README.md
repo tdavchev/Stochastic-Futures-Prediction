@@ -22,8 +22,11 @@ jupyter notebook
 ```
 
 And navigate to Notebooks -> Tutorial 1.ipynb
+![Ipython Notebook 1](https://drive.google.com/uc?export=view&id=1JmlL7a2IhwmHZ-LCRYJRDA6ksxeUi8Tn)
 
-![Ipython Notebook](https://cdn1.imggmi.com/uploads/2018/9/12/cb43dc627b5af63bc5bd03cb7c270f67-full.png)
+And -> Tutorial 2.ipynb
+![Ipython Notebook 2](https://drive.google.com/uc?export=view&id=168tMhQOgaecxUeM7WT_0AXw_cmtANIp_)
+
 
 ### Training and Inference
 Trainign can be done using relatively small CPU power. The example below training is done using MacBook Pro 13 base model. At train time the output is similar to this:
@@ -46,7 +49,7 @@ Total mean error of the model is  0.10521254192652005
 
 Results in:
 
-![Trajectory Prediction](https://media.giphy.com/media/2tMzCcNILY2JAryf6g/giphy.gif)
+![Trajectory Prediction](https://dev.bg/wp-content/uploads/2018/11/inference.gif)
 
 ### Project Structure
 
