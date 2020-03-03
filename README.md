@@ -1,7 +1,7 @@
 # Stochastic Trajectory Prediction using LSTMs
 Author: Todor Davchev, The University of Edinburgh.
 
-Code for the series of blog posts at Dev.bg (Tutorial 1 in Bulgarian) and Cambridge Spark.
+Code for the series of blog posts at Cambridge Spark. Some parts of it can be found in bulgarian at Dev.bg.
 
 This repository relies on python 3.6 and has been tested on an Anaconda environment. Contributions towards extending the platforms and means for running these tutorials along with any suggestions for improvement are highly valued and more than welcome!
 
