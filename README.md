@@ -22,7 +22,7 @@ jupyter notebook
 ```
 
 And navigate to Notebooks -> Tutorial 1.ipynb
-![Ipython Notebook 1](https://drive.google.com/file/d/1JmlL7a2IhwmHZ-LCRYJRDA6ksxeUi8Tn/view?usp=sharing)
+![Ipython Notebook 1](https://drive.google.com/uc?export=view&id=1JmlL7a2IhwmHZ-LCRYJRDA6ksxeUi8Tn)
 
 And -> Tutorial 2.ipynb
 ![Ipython Notebook 2](https://drive.google.com/uc?export=view&id=168tMhQOgaecxUeM7WT_0AXw_cmtANIp_)
