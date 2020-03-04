@@ -3,7 +3,7 @@ Author: Todor Davchev, The University of Edinburgh.
 
 Code for the series of blog posts at Cambridge Spark. Some parts of it can be found in bulgarian at Dev.bg.
 
-The aim of the project is to compare different approaches to trajectory generation. It starts with a very basic and rather intuitive model that doesn't work too well, followed by a simple modification of it that makes all the difference. All future models will build upon the previous ways. The aim is to hel the reader gradually build an intuition for trajectory generation.
+The aim of the project is to compare different approaches for trajectory generation. It starts with a very basic and rather intuitive model that doesn't work too well, followed by a simple modification of it that makes all the difference. All future models will build upon the previous ways. The aim is to hel the reader gradually build an intuition for trajectory generation.
 
 This repository relies on python 3.6, Tensorflow 1.15.0 and has been tested on an Anaconda environment. Contributions towards extending the platforms and means for running these tutorials along with any suggestions for improvement are highly valued and more than welcome!
 
