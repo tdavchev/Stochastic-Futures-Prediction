@@ -1,7 +1,7 @@
 # Stochastic Trajectory Prediction using LSTMs
 Author: Todor Davchev, The University of Edinburgh.
 
-Code for the series of blog posts at Cambridge Spark. Some parts of it can be found in bulgarian at Dev.bg.
+Code for the series of blog posts: [Colab Link](https://colab.research.google.com/drive/19DzZY2OjFEIXhV_RbnArSbdMtVwk35xd). Some parts of it can be found in bulgarian at Dev.bg.
 
 The aim of the project is to compare different approaches for trajectory generation. It starts with a very basic and rather intuitive model that doesn't work too well, followed by a simple modification of it that makes all the difference. All future models will build upon the previous ones. The aim is to help the reader gradually build an intuition for trajectory generation.
 
