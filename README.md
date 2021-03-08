@@ -3,6 +3,19 @@ Author: Todor Davchev, The University of Edinburgh.
 
 Code for the series of blog posts: [Colab Link](https://colab.research.google.com/drive/19DzZY2OjFEIXhV_RbnArSbdMtVwk35xd). Some parts of it can be found in Bulgarian at [Dev.bg](https://dev.bg/%D1%83%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%B0%D1%82%D0%B0-%D0%BD%D0%B0-lstms-%D0%B8%D0%BB%D0%B8-%D1%81%D1%82%D0%BE%D0%BA%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8-%D0%B4%D1%8A%D0%BB%D0%B1%D0%BE/).
 
+It is the building blocks code to [Learning Structured Representations of Spatial and Interactive Dynamics for Trajectory Prediction in Crowded Scenes](https://arxiv.org/abs/1911.13044) and extended repo at [here](https://github.com/tdavchev/structured-trajectory-prediction). 
+
+If you find this code useful, please cite as follows:
+
+```bibtex
+@article{davchev2020learning,
+  title={Learning Structured Representations of Spatial and Interactive Dynamics for Trajectory Prediction in Crowded Scenes},
+  author={Davchev, Todor Bozhinov and Burke, Michael and Ramamoorthy, Subramanian},
+  journal={IEEE Robotics and Automation Letters},
+  year={2020},
+  publisher={IEEE}
+}
+
 The aim of the project is to compare different approaches for trajectory generation. It starts with a very basic and rather intuitive model that doesn't work too well, followed by a simple modification of it that makes all the difference. All future models will build upon the previous ones. The aim is to help the reader gradually build an intuition for trajectory generation.
 
 This repository relies on python 3.6, Tensorflow 1.15.0 and has been tested on an Anaconda environment. Contributions towards extending the platforms and means for running these tutorials along with any suggestions for improvement are highly valued and more than welcome!
