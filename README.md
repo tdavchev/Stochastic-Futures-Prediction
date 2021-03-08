@@ -15,6 +15,7 @@ If you find this code useful, please cite as follows:
   year={2020},
   publisher={IEEE}
 }
+```
 
 The aim of the project is to compare different approaches for trajectory generation. It starts with a very basic and rather intuitive model that doesn't work too well, followed by a simple modification of it that makes all the difference. All future models will build upon the previous ones. The aim is to help the reader gradually build an intuition for trajectory generation.
 
