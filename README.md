@@ -3,7 +3,7 @@ Author: Todor Davchev, The University of Edinburgh.
 
 Code for the series of blog posts: [Colab Link](https://colab.research.google.com/drive/19DzZY2OjFEIXhV_RbnArSbdMtVwk35xd). Some parts of it can be found in Bulgarian at [Dev.bg](https://dev.bg/%D1%83%D0%BF%D0%BE%D1%82%D1%80%D0%B5%D0%B1%D0%B0%D1%82%D0%B0-%D0%BD%D0%B0-lstms-%D0%B8%D0%BB%D0%B8-%D1%81%D1%82%D0%BE%D0%BA%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8-%D0%B4%D1%8A%D0%BB%D0%B1%D0%BE/).
 
-It is the building blocks code to [Learning Structured Representations of Spatial and Interactive Dynamics for Trajectory Prediction in Crowded Scenes](https://arxiv.org/abs/1911.13044) and extended repo at [here](https://github.com/tdavchev/structured-trajectory-prediction). 
+It is the building blocks code to [Learning Structured Representations of Spatial and Interactive Dynamics for Trajectory Prediction in Crowded Scenes](https://arxiv.org/abs/1911.13044) and extended repo [here](https://github.com/tdavchev/structured-trajectory-prediction). 
 
 If you find this code useful, please cite as follows:
 
