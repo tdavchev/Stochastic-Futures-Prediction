@@ -25,7 +25,7 @@ This repository relies on python 3.6, Tensorflow 1.15.0 and has been tested on a
 
 [Set up and activate an Anaconda environment](https://github.com/CSTR-Edinburgh/mlpractical/blob/mlp2017-8/master/notes/environment-set-up.md), then run the following commands:
 ```
-git clone git@github.com:yadrimz/stochastic_futures_prediction.git
+git clone git@github.com:tdavchev/stochastic_futures_prediction.git
 cd stochastic_futures_prediction
 pip install -r requirements.txt
 python setup.py install
@@ -41,7 +41,7 @@ And navigate to Notebooks -> Tutorial 1.ipynb
 ![Ipython Notebook 1](https://drive.google.com/uc?export=view&id=1JmlL7a2IhwmHZ-LCRYJRDA6ksxeUi8Tn)
 
 And -> Tutorial 2.ipynb
-![Ipython Notebook 2](https://drive.google.com/uc?export=view&id=168tMhQOgaecxUeM7WT_0AXw_cmtANIp_ )
+![Ipython Notebook 2](https://drive.google.com/uc?export=view&id=168tMhQOgaecxUeM7WT_0AXw_cmtANIp_)
 
 
 ### Training and Inference
